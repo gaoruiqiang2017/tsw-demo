@@ -88,6 +88,15 @@ PS: account、email、inventory、logistics和order目录可以在不同主机�
 - 如果是前台启动jar包：```java -javaagent:{absolute_path}/tsw-demo/order/tsw-client-package/tsw-agent.jar -jar {absolute_path}/tsw-demo/order/spring-boot-order-0.0.1-SNAPSHOT.jar```
 - 如果是后台启动jar包```nohup java -javaagent:{absolute_path}/tsw-demo/order/tsw-client-package/tsw-agent.jar -jar {absolute_path}/tsw-demo/order/spring-boot-order-0.0.1-SNAPSHOT.jar &```
 
+java -javaagent:/home/demo/20220802-6-2/oneapm.jar -jar spring-boot-account-1.0.jar --spring.datasource.username=root --spring.datasource.password=root --spring.datasource.url=jdbc:mysql://10.128.106.122:3306/tsw_demo?useSSL=false&characterEncoding=utf8&serverTimezone=GMT > account.nohup.log &
+
+java -jar spring-boot-inventory-1.0.jar --spring.datasource.username=root --spring.datasource.password=root --spring.datasource.url=jdbc:mysql://10.128.106.122:3306/tsw_demo?useSSL=false&characterEncoding=utf8&serverTimezone=GMT > inventory.nohup.log &
+
+java -javaagent:/home/demo/20220802-6/oneapm.jar -jar spring-boot-order-1.0.jar --spring.datasource.username=root --spring.datasource.password=root --spring.datasource.url=jdbc:mysql://10.128.106.122:3306/tsw_demo?useSSL=false&characterEncoding=utf8&serverTimezone=GMT > order.nohup.log &
+
+
+java -jar spring-boot-logistics-1.0.jar --spring.redis.host=10.128.106.122 --spring.redis.port=6379  --spring.kafka.bootstrap-servers=10.128.106.122:9092 > logistics.nohup.log &
+
 ## CURL
 
 > 注意修改{IP}
