@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+
 /**
  * @author skyehtzhang
  * @date 2020/11/9
@@ -17,7 +19,14 @@ public class AccountRestTemplate {
 
 	public Boolean pay(Order order) {
 		// 扣钱
-		return restTemplate.postForObject("http://127.0.0.1:19101/account/pay", order, Boolean.class);
+		try {
+			String s = NewHttpClient.doPost("http://127.0.0.1:19101/account/pay", order);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return true;
+		//return restTemplate.postForObject("http://127.0.0.1:19101/account/pay", order,
+				//Boolean.class);
 	}
 
 }

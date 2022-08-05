@@ -102,7 +102,7 @@ java -jar spring-boot-logistics-1.0.jar --spring.redis.host=10.128.106.122 --spr
 > 注意修改{IP}
 
 ```curl
-curl --location --request POST '{IP}:19100/order/create' \
+curl --location --request POST '127.0.0.1:19100/order/create' \
 --header 'Content-Type: application/json' \
 -d '{
     "productId": 1,
